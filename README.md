@@ -42,6 +42,16 @@ There are no dependencies. You need only npm installed and just run `npm install
 ```javascript
   let EM = new EventEmitter();
 
+  EM.once('foo', (bar, baz) => {
+    // some code...
+  });
+
+  EM.emit('foo', 'var 1 for bar', 'var 2 for baz');
+```
+
+```javascript
+  let EM = new EventEmitter();
+
   EM.on('foo', () => {
     // some code...
   });
