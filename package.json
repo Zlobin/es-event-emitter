@@ -1,5 +1,5 @@
 {
-  "name": "EventEmitter",
+  "name": "es-event-emitter",
   "description": "Javascript Event Emitter",
   "version": "1.0.0",
   "main": "src/index.js",
@@ -17,6 +17,7 @@
     "EventEmitter",
     "javascript",
     "node.js",
+    "ES2015",
     "event driven",
     "on",
     "emit",
@@ -32,6 +33,7 @@
     "gulp-uglify": "^1.5.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-plugin-transform-export-extensions": "^6.5.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
@@ -52,6 +54,7 @@
     "node": ">=0.12"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "start": "babel-node --presets es2015 ./benchmark/single.js"
   }
 }
