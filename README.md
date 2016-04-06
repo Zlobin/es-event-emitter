@@ -111,7 +111,7 @@ EM
   .off('foo');
 ```
 
-// You can set maxNumberOfListeners as a parameter when creating new instance.
+You can set maxNumberOfListeners as a parameter when creating new instance.
 ```javascript
 const EM = new EventEmitter(1);
 

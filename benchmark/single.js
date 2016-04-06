@@ -39,7 +39,7 @@ const runTest = (instance) => {
   let diff, i = 1000000;
 
   while (i--) {
-  	instance.emit('foo');
+    instance.emit('foo');
   }
 
   diff = process.hrtime(time);
