@@ -1,7 +1,7 @@
 {
   "name": "es-event-emitter",
   "description": "Javascript Event Emitter",
-  "version": "1.2.0",
+  "version": "1.1.2",
   "main": "src/index.js",
   "author": {
     "name": "Eugene Zlobin",
