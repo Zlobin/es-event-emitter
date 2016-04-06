@@ -1,6 +1,5 @@
 'use strict';
 
-const Apply = Function.prototype.apply;
 const privateMap = new WeakMap();
 
 // For making private properties.
@@ -11,6 +10,9 @@ function internal(obj) {
 
   return privateMap.get(obj);
 }
+
+// Excluding callbacks from internal(_callbacks) for increasing speed.
+let _callbacks = {};
 
 /** Class EventEmitter for event-driven architecture. */
 export default class EventEmitter {
@@ -30,7 +32,6 @@ export default class EventEmitter {
     const self = internal(this);
 
     self._events = new Set();
-    self._callbacks = {};
     self._console = localConsole;
     self._maxListeners = maxListeners === null ?
       null : parseInt(maxListeners, 10);
@@ -59,7 +60,7 @@ export default class EventEmitter {
     // Sort the array of callbacks in
     // the order of their call by "weight".
     this._getCallbacks(eventName)
-      .sort((a, b) => a.weight > b.weight);
+      .sort((a, b) => b.weight - a.weight);
 
     return this;
   }
@@ -72,7 +73,7 @@ export default class EventEmitter {
    * @return {object|undefined}
    */
   _getCallbacks(eventName) {
-    return internal(this)._callbacks[eventName];
+    return _callbacks[eventName];
   }
 
   /**
@@ -86,7 +87,7 @@ export default class EventEmitter {
   _getCallbackIndex(eventName, callback) {
     return this._has(eventName) ?
       this._getCallbacks(eventName)
-        .findIndex((element) => element.callback === callback) : null;
+        .findIndex(element => element.callback === callback) : -1;
   }
 
   /**
@@ -152,7 +153,7 @@ export default class EventEmitter {
     // and define callbacks as an empty object.
     if (!this._has(eventName)) {
       self._events.add(eventName);
-      self._callbacks[eventName] = [];
+      _callbacks[eventName] = [];
     } else {
       // Check if we reached maximum number of listeners.
       if (this._achieveMaxListener(eventName)) {
@@ -185,7 +186,7 @@ export default class EventEmitter {
   once(eventName, callback, context = null, weight = 1) {
     const onceCallback = (...args) => {
       this.off(eventName, onceCallback);
-      return Apply.call(callback, context, args);
+      return callback.call(context, args);
     };
 
     return this.on(eventName, onceCallback, context, weight);
@@ -208,12 +209,12 @@ export default class EventEmitter {
         // Remove the event.
         self._events.delete(eventName);
         // Remove all listeners.
-        self._callbacks[eventName] = null;
+        _callbacks[eventName] = null;
       } else {
         callbackInd = this._getCallbackIndex(eventName, callback);
 
         if (callbackInd !== -1) {
-          self._callbacks[eventName].splice(callbackInd, 1);
+          this._getCallbacks(eventName).splice(callbackInd, 1);
           // Remove all equal callbacks.
           this.off(...arguments);
         }
@@ -231,14 +232,48 @@ export default class EventEmitter {
    *
    * @return {this}
    */
-  emit(eventName, ...args) {
-    if (this._has(eventName)) {
-      // All callbacks will be triggered sorter by "weight" parameter.
-      this._getCallbacks(eventName)
-        .forEach((element) =>
-          Apply.call(element.callback, element.context, args)
-        );
+  emit(eventName/* , ...args*/) {
+    /*
+      if (this._has(eventName)) {
+        this._getCallbacks(eventName)
+          .forEach(element =>
+            element.callback.call(element.context, args)
+          );
+      }
+    */
+
+    // It works ~3 times faster.
+    const custom = _callbacks[eventName];
+    // Number of callbacks.
+    let i = custom ? custom.length : 0;
+    let len = arguments.length;
+    let args;
+    let current;
+
+    if (i > 0 && len > 1) {
+      args = new Array(len - 1);
+
+      while (len--) {
+        if (len === 1) {
+          // We do not need first argument.
+          break;
+        }
+        args[len] = arguments[len];
+      }
     }
+
+    while (i--) {
+      current = custom[i];
+
+      if (arguments.length > 1) {
+        current.callback.call(current.context, args);
+      } else {
+        current.callback.call(current.context);
+      }
+    }
+
+    // Just clean it.
+    args = null;
 
     return this;
   }
@@ -249,10 +284,8 @@ export default class EventEmitter {
    * @return {this}
    */
   clear() {
-    const self = internal(this);
-
-    self._events.clear();
-    self._callbacks = {};
+    internal(this)._events.clear();
+    _callbacks = {};
 
     return this;
   }
@@ -267,6 +300,6 @@ export default class EventEmitter {
    */
   listenersNumber(eventName) {
     return this._has(eventName) ?
-      this._getCallbacks(eventName).length : null;
+      _callbacks[eventName].length : null;
   }
 }
