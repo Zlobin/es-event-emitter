@@ -1,7 +1,7 @@
 {
   "name": "es-event-emitter",
-  "description": "Javascript Event Emitter",
-  "version": "1.2.0",
+  "description": "A small, incredible fast Event-Emitter library based on ES2015",
+  "version": "1.2.1",
   "main": "src/index.js",
   "author": {
     "name": "Eugene Zlobin",
@@ -13,7 +13,10 @@
     "url": "https://github.com/Zlobin/EventEmitter.git"
   },
   "keywords": [
+    "event-emitter",
     "event",
+    "emitter",
+    "events",
     "EventEmitter",
     "javascript",
     "node.js",
@@ -21,7 +24,9 @@
     "event driven",
     "on",
     "emit",
-    "trigger"
+    "trigger",
+    "pubsub",
+    "listener"
   ],
   "license": "MIT",
   "dependencies": {
@@ -52,7 +57,7 @@
     "source-map": "^0.5.3"
   },
   "engines": {
-    "node": ">=0.12"
+    "node": ">=4"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
