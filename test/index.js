@@ -2,7 +2,7 @@ import EventEmitter from '../src/index.js';
 import expect from 'expect';
 
 describe('EventEmitter', function() {
-  let EM = new EventEmitter();
+  const EM = new EventEmitter();
 
   describe('1: Constructor', function() {
     EM.on('foo', () => 'some response');
@@ -79,15 +79,15 @@ describe('EventEmitter', function() {
       .off('baz')
       .emit('baz');
 
-    it('4.1: event "bar" should not be triggered', () => {
-      expect(foo).toEqual(1);
-    });
+    it('4.1: event "bar" should not be triggered', () =>
+      expect(foo).toEqual(1)
+    );
   });
 
   describe('5: listenersNumber()', function() {
-    it('5.1: Initial "foo" should be equal 2', () => {
-      expect(EM.listenersNumber('bar1')).toEqual(null);
-    });
+    it('5.1: Initial "foo" should be equal 2', () =>
+      expect(EM.listenersNumber('bar1')).toEqual(null)
+    );
 
     it('5.2: After triggering event "bar", "foo" should be equal 3', () => {
       EM

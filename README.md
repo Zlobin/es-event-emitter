@@ -25,16 +25,16 @@ EM
 
 ```
 // Custom:
-es-event-emitter 100,000: 20735386 nanoseconds
-Node.js native 100,000: 42366560 nanoseconds
-EventEmitter2 100,000: 91709148 nanoseconds
-event-emitter 100,000: 209422302 nanoseconds
+es-event-emitter 100,000: 29284943 nanoseconds
+Node.js native 100,000: 41954981 nanoseconds
+EventEmitter2 100,000: 91033365 nanoseconds
+event-emitter 100,000: 211658201 nanoseconds
 
 // Via benchmark library:
-es-event-emitter x 27,858,069 ops/sec ±0.73% (75 runs sampled)
-event-emitter x 5,302,901 ops/sec ±0.56% (81 runs sampled)
-EventEmitter2 x 19,481,149 ops/sec ±0.99% (75 runs sampled)
-Node.js native x 18,608,764 ops/sec ±1.18% (80 runs sampled)
+es-event-emitter x 21,508,327 ops/sec ±0.47% (76 runs sampled)
+event-emitter x 5,444,296 ops/sec ±0.40% (89 runs sampled)
+EventEmitter2 x 18,105,022 ops/sec ±2.07% (74 runs sampled)
+Node.js native x 17,800,136 ops/sec ±0.87% (83 runs sampled)
 Fastest is es-event-emitter
 ```
 
@@ -43,7 +43,22 @@ Fastest is es-event-emitter
 There are no dependencies. You need only npm installed and just run `npm install` to grab the development dependencies.
 
 ## Examples
+run `npm i es-event-emitter`
 
+Run `npm i` under EventEmitter library's path and now you can include EventEmitter in html.
+```html
+<script src="<path to es-event-emitter library>dist/bundle.js"></script>
+<script>
+var EM = EventEmitter.default();
+// ...
+</script>
+```
+
+or just:
+```javascript
+import EM from 'es-event-emitter';
+// ...
+```
 
 Creating an instance.
 ```javascript
