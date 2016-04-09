@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const fs = require('fs');
 const env = process.env.NODE_ENV || 'development';
-const isProduction = false; //(env === 'production');
+const isProduction = (env === 'production');
 
 // http://survivejs.com/webpack_react/webpack_and_react/#using-babel-for-webpack-configuration
 

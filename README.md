@@ -147,10 +147,6 @@ Tests are performed using mocha and expect library `npm test`.
 
 You can use JSDoc comments found within the source code.
 
-## Minifying
-
-You can grab minified versions of EventEmitter from /dist path after running `gulp build`.
-
 ## Todo
 
 1. Add event's namespace:
