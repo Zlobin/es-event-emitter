@@ -1,7 +1,7 @@
 {
   "name": "es-event-emitter",
   "description": "A small, incredible fast Event-Emitter library based on ES2015",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "src/index.js",
   "author": {
     "name": "Eugene Zlobin",
