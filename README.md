@@ -40,21 +40,25 @@ Fastest is es-event-emitter
 
 ## Dependencies
 
-There are no dependencies. You need only npm installed and just run `npm install` to grab the development dependencies.
+There are no dependencies. You need only npm installed and just run `npm i` to grab the development dependencies.
 
 ## Examples
 run `npm i es-event-emitter`
 
 Run `npm i` under EventEmitter library's path and now you can include EventEmitter in html.
-```html
-<script src="<path to es-event-emitter library>dist/bundle.js"></script>
-<script>
-var EM = EventEmitter.default();
-// ...
-</script>
+
+```javascript
+var EM = require('es-event-emitter');
 ```
 
-or just:
+Or an usual html inculde:
+
+```html
+<script src="<PATH/TO/LIBRARY>/dist/bundle.js">
+```
+
+or ES2015 import:
+
 ```javascript
 import EM from 'es-event-emitter';
 // ...
@@ -62,12 +66,12 @@ import EM from 'es-event-emitter';
 
 Creating an instance.
 ```javascript
-const EM = new EventEmitter();
+var EM = new EventEmitter();
 ```
 
 An usual example.
 ```javascript
-EM.on('foo', () => {
+EM.on('foo', function() {
   // some code...
 });
 
@@ -76,7 +80,7 @@ EM.emit('foo');
 
 It will be triggered only once and then callbacks will be removed.
 ```javascript
-EM.once('foo', () => {
+EM.once('foo', function() {
   // some code...
 });
 
@@ -87,7 +91,7 @@ EM.emit('foo');
 
 Callback with parameters.
 ```javascript
-EM.once('foo', (bar, baz) => {
+EM.once('foo', function(bar, baz) {
   // some code...
 });
 
@@ -96,17 +100,17 @@ EM.emit('foo', 'var 1 for bar', 'var 2 for baz');
 
 Callback's call can be ordered by "weight" parameter.
 ```javascript
-EM.on('foo', () =>
-  console.log('3')
-, null, 1);
+EM.on('foo', function() {
+  console.log('3');
+}, null, 1);
 
-EM.on('foo', () =>
-  console.log('1')
-, null, 3);
+EM.on('foo', function() {
+  console.log('1');
+}, null, 3);
 
-EM.on('foo', () =>
-  console.log('2')
-, null, 2);
+EM.on('foo', function() {
+  console.log('2');
+}, null, 2);
 
 EM.emit('foo');
 // 3
@@ -116,7 +120,7 @@ EM.emit('foo');
 
 You can use chaining.
 ```javascript
-EM.on('foo', () => {
+EM.on('foo', function() {
   // some code...
 });
 
@@ -130,11 +134,11 @@ You can set maxNumberOfListeners as a parameter when creating new instance.
 ```javascript
 const EM = new EventEmitter(1);
 
-EM.on('foo', () => {
+EM.on('foo', function() {
   // some code...
 });
 // Note: it will show notification in console.
-EM.on('foo', () => {
+EM.on('foo', function() {
   // some other code...
 });
 ```
@@ -152,7 +156,7 @@ You can use JSDoc comments found within the source code.
 1. Add event's namespace:
 
 ```javascript
-EM.on('foo.*', () => {
+EM.on('foo.*', function() {
   // some code...
 });
 ```
@@ -160,7 +164,7 @@ EM.on('foo.*', () => {
 2. Add events through comma:
 
 ```javascript
-EM.on('foo,bar,baz', () => {
+EM.on('foo,bar,baz', function() {
   // some code...
 });
 ```
@@ -168,7 +172,7 @@ EM.on('foo,bar,baz', () => {
 3. Add method "onAny" for listening each event:
 
 ```javascript
-EM.onAny(() => {
+EM.onAny(function() {
   // some code...
 });
 ```

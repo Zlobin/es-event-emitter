@@ -3,6 +3,7 @@
   "rules": {
     "comma-dangle": [2, "never"],
     "no-param-reassign": 0,
-    "prefer-rest-params": 0
+    "prefer-rest-params": 0,
+    "no-underscore-dangle": 0
   }
 }

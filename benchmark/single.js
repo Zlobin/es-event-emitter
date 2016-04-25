@@ -7,7 +7,7 @@
 import EM from 'event-emitter';
 import EM2 from 'eventemitter2';
 import EM_native from 'events';
-import EM_current from '../src/index.js';
+import EM_current from '../src/event-emitter.js';
 
 import Benchmark from 'benchmark';
 

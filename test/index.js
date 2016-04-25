@@ -1,4 +1,4 @@
-import EventEmitter from '../src/index.js';
+import EventEmitter from '../src/event-emitter.js';
 import expect from 'expect';
 
 describe('EventEmitter', function() {
