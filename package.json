@@ -54,6 +54,6 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "start": "babel-node --presets es2015 ./benchmark/single.js"
+    "start": "npm i eventemitter2 event-emitter && babel-node --presets es2015 ./benchmark/single.js"
   }
 }
