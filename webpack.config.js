@@ -41,15 +41,15 @@ module.exports = {
     preLoaders: [
       {
         test: /\.js$/,
-        loader: 'eslint-loader',
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
+        loader: 'eslint-loader'
       }
     ],
     loaders: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
+        loaders: ['babel']
       }
     ]
   }

@@ -1,8 +1,7 @@
 'use strict';
 
 // Benchmark comparing performance of event emit for single listener.
-// $ npm i eventemitter2 event-emitter
-// $ npm start
+// $ npm i eventemitter2 event-emitter && npm start
 
 import EM from 'event-emitter';
 import EM2 from 'eventemitter2';
