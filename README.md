@@ -15,7 +15,9 @@ You can use this library in browser either at the server as within the node.js.
 
 ## Benchmark
 
-```javascript
+Run `npm start`.
+
+```js
 const EM = new EventEmitter();
 
 EM
@@ -24,7 +26,7 @@ EM
 ```
 
 ```
-// Custom:
+// Manual:
 es-event-emitter 100,000: 29284943 nanoseconds
 Node.js native 100,000: 41954981 nanoseconds
 EventEmitter2 100,000: 91033365 nanoseconds
@@ -43,34 +45,33 @@ Fastest is es-event-emitter
 There are no dependencies. You need only npm installed and just run `npm i` to grab the development dependencies.
 
 ## Examples
-run `npm i es-event-emitter`
+Run `npm i es-event-emitter`
+Run `npm i && webpack` under EventEmitter library's path and now you can include EventEmitter in html.
 
-Run `npm i` under EventEmitter library's path and now you can include EventEmitter in html.
-
-```javascript
+```js
 var EM = require('es-event-emitter');
 ```
 
-Or an usual html inculde:
+### html inculde:
 
 ```html
 <script src="<PATH/TO/LIBRARY>/dist/bundle.js">
 ```
 
-or ES2015 import:
+### Or ES2015 import:
 
-```javascript
+```js
 import EM from 'es-event-emitter';
 // ...
 ```
 
-Creating an instance.
-```javascript
+### Creating an instance.
+```js
 var EM = new EventEmitter();
 ```
 
-An usual example.
-```javascript
+### An usual example.
+```js
 EM.on('foo', function() {
   // some code...
 });
@@ -78,8 +79,8 @@ EM.on('foo', function() {
 EM.emit('foo');
 ```
 
-It will be triggered only once and then callbacks will be removed.
-```javascript
+### It will be triggered only once and then callbacks will be removed.
+```js
 EM.once('foo', function() {
   // some code...
 });
@@ -89,8 +90,8 @@ EM.emit('foo');
 EM.emit('foo');
 ```
 
-Callback with parameters.
-```javascript
+### Callback with parameters.
+```js
 EM.once('foo', function(bar, baz) {
   // some code...
 });
@@ -98,8 +99,8 @@ EM.once('foo', function(bar, baz) {
 EM.emit('foo', 'var 1 for bar', 'var 2 for baz');
 ```
 
-Callback's call can be ordered by "weight" parameter.
-```javascript
+### Callback's call can be ordered by "weight" parameter.
+```js
 EM.on('foo', function() {
   console.log('3');
 }, null, 1);
@@ -119,7 +120,7 @@ EM.emit('foo');
 ```
 
 You can use chaining.
-```javascript
+```js
 EM.on('foo', function() {
   // some code...
 });
@@ -130,8 +131,8 @@ EM
   .off('foo');
 ```
 
-You can set maxNumberOfListeners as a parameter when creating new instance.
-```javascript
+### You can set maxNumberOfListeners as a parameter when creating new instance.
+```js
 const EM = new EventEmitter(1);
 
 EM.on('foo', function() {
@@ -155,7 +156,7 @@ You can use JSDoc comments found within the source code.
 
 1. Add event's namespace:
 
-```javascript
+```js
 EM.on('foo.*', function() {
   // some code...
 });
@@ -163,7 +164,7 @@ EM.on('foo.*', function() {
 
 2. Add events through comma:
 
-```javascript
+```js
 EM.on('foo,bar,baz', function() {
   // some code...
 });
@@ -171,7 +172,7 @@ EM.on('foo,bar,baz', function() {
 
 3. Add method "onAny" for listening each event:
 
-```javascript
+```js
 EM.onAny(function() {
   // some code...
 });
