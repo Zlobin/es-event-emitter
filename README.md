@@ -52,25 +52,25 @@ Run `npm i && webpack` under EventEmitter library's path and now you can include
 var EM = require('es-event-emitter');
 ```
 
-### html inculde:
+##### html inculde:
 
 ```html
 <script src="<PATH/TO/LIBRARY>/dist/bundle.js">
 ```
 
-### Or ES2015 import:
+##### Or ES2015 import:
 
 ```js
 import EM from 'es-event-emitter';
 // ...
 ```
 
-### Creating an instance.
+##### Creating an instance.
 ```js
 var EM = new EventEmitter();
 ```
 
-### An usual example.
+##### An usual example.
 ```js
 EM.on('foo', function() {
   // some code...
@@ -79,7 +79,7 @@ EM.on('foo', function() {
 EM.emit('foo');
 ```
 
-### It will be triggered only once and then callbacks will be removed.
+##### It will be triggered only once and then callbacks will be removed.
 ```js
 EM.once('foo', function() {
   // some code...
@@ -90,7 +90,7 @@ EM.emit('foo');
 EM.emit('foo');
 ```
 
-### Callback with parameters.
+##### Callback with parameters.
 ```js
 EM.once('foo', function(bar, baz) {
   // some code...
@@ -99,7 +99,7 @@ EM.once('foo', function(bar, baz) {
 EM.emit('foo', 'var 1 for bar', 'var 2 for baz');
 ```
 
-### Callback's call can be ordered by "weight" parameter.
+##### Callback's call can be ordered by "weight" parameter.
 ```js
 EM.on('foo', function() {
   console.log('3');
@@ -119,7 +119,7 @@ EM.emit('foo');
 // 1
 ```
 
-You can use chaining.
+##### Chaining.
 ```js
 EM.on('foo', function() {
   // some code...
@@ -131,7 +131,7 @@ EM
   .off('foo');
 ```
 
-### You can set maxNumberOfListeners as a parameter when creating new instance.
+##### Set maxNumberOfListeners as a parameter when creating new instance.
 ```js
 const EM = new EventEmitter(1);
 
