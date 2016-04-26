@@ -1,5 +1,5 @@
 
-# EventEmitter in JavaScript [![Build Status](https://travis-ci.org/Zlobin/EventEmitter.png?branch=master)](https://travis-ci.org/Zlobin/EventEmitter)
+# EventEmitter in JavaScript [![Build Status](https://travis-ci.org/Zlobin/es-event-emitter.png?branch=master)](https://travis-ci.org/Zlobin/es-event-emitter)
 
 ## Synopsis
 
