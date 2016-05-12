@@ -45,7 +45,7 @@ Fastest is es-event-emitter
 There are no dependencies. You need only npm installed and just run `npm i` to grab the development dependencies.
 
 ## Examples
-Run `npm i es-event-emitter`
+Run `npm i es-event-emitter` for installing the library.
 Run `npm i && webpack` under EventEmitter library's path and now you can include EventEmitter in html.
 
 ```js
