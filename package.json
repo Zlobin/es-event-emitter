@@ -1,7 +1,7 @@
 {
   "name": "es-event-emitter",
   "description": "Small and incredible fast Event-Emitter library based on JavaScript (ES2015)",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "main": "src/index.js",
   "files": [
     "src",

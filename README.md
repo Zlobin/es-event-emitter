@@ -15,10 +15,10 @@ You can use this library in browser either at the server as within the node.js.
 
 ## Installation
 
-`npm i --save es-event-emitter`
-or
-`git clone https://github.com/Zlobin/es-event-emitter.git`
-`cd es-event-emitter && npm i && webpack`
+`npm i --save es-event-emitter`<br>
+or<br>
+`git clone https://github.com/Zlobin/es-event-emitter.git`<br>
+`cd es-event-emitter && npm i && webpack`<br>
 
 ## Benchmark
 
