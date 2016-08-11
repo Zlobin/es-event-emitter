@@ -2,7 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const fs = require('fs');
 
 const env = process.env.NODE_ENV || 'development';
 const isProduction = (env === 'production');
@@ -25,7 +24,7 @@ if (isProduction) {
 }
 
 module.exports = {
-  devtool: !isProduction ? 'cheap-source-map' : 'eval',
+  devtool: isProduction ? 'cheap-source-map' : 'eval',
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -36,7 +35,7 @@ module.exports = {
   resolve: {
     root: path.join(__dirname, 'dist')
   },
-  plugins: plugins,
+  plugins,
   module: {
     preLoaders: [
       {

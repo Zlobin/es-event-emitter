@@ -1,3 +1,5 @@
+/* global WeakMap */
+
 const privateMap = new WeakMap();
 
 // For making private properties.
