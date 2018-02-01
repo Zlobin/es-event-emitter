@@ -57,7 +57,7 @@ There are no dependencies. You need only npm installed and just run `npm i` to g
 var EM = require('es-event-emitter');
 ```
 
-##### html inculde:
+##### html include:
 
 ```html
 <script src="<PATH/TO/LIBRARY>/dist/bundle.js">
