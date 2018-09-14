@@ -189,7 +189,7 @@ export default class EventEmitter {
   once(eventName, callback, context = null, weight = 1) {
     const onceCallback = (...args) => {
       this.off(eventName, onceCallback);
-      return callback.call(context, args);
+      return callback.apply(context, args);
     };
 
     return this.on(eventName, onceCallback, context, weight);
