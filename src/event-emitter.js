@@ -189,7 +189,7 @@ export default class EventEmitter {
   once(eventName, callback, context = null, weight = 1) {
     const onceCallback = (...args) => {
       this.off(eventName, onceCallback);
-      return callback.call(context, args);
+      return callback.apply(context, args);
     };
 
     return this.on(eventName, onceCallback, context, weight);
@@ -254,22 +254,14 @@ export default class EventEmitter {
     let current;
 
     if (i > 0 && len > 1) {
-      args = new Array(len - 1);
-
-      while (len--) {
-        if (len === 1) {
-          // We do not need first argument.
-          break;
-        }
-        args[len] = arguments[len];
-      }
+      args = Array.prototype.slice.call(arguments, 1);
     }
 
     while (i--) {
       current = custom[i];
 
       if (arguments.length > 1) {
-        current.callback.call(current.context, args);
+        current.callback.apply(current.context, args);
       } else {
         current.callback.call(current.context);
       }
